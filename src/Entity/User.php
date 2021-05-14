@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\commonMixins\DateMixins;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,6 +12,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    use DateMixins;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -27,6 +30,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
 
     /**
      * @var string The hashed password

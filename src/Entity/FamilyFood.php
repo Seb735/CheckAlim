@@ -7,6 +7,7 @@ use App\Repository\FamilyFoodRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FamilyFoodRepository::class)
@@ -19,11 +20,13 @@ class FamilyFood
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $name;
 

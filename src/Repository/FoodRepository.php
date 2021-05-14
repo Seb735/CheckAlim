@@ -19,6 +19,15 @@ class FoodRepository extends ServiceEntityRepository
         parent::__construct($registry, Food::class);
     }
 
+    public function getAllForOneUser(User $user)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Food[] Returns an array of Food objects
     //  */

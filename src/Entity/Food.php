@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\commonMixins\DateMixins;
 use App\Repository\FoodRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FoodRepository::class)
@@ -17,38 +18,45 @@ class Food
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $expirationDate;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $isOutOfDate;
 
     /**
      * @ORM\ManyToOne(targetEntity=FamilyFood::class, inversedBy="food")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $familyfood;
 
     /**
      * @ORM\ManyToOne(targetEntity=Preservation::class, inversedBy="food")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get_all_food","get_one_food"})
      */
     private $preservation;
 

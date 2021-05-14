@@ -40,6 +40,24 @@ class Food
      */
     private $isOutOfDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=FamilyFood::class, inversedBy="food")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $familyfood;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Preservation::class, inversedBy="food")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $preservation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="food")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +107,42 @@ class Food
     public function setIsOutOfDate(bool $isOutOfDate): self
     {
         $this->isOutOfDate = $isOutOfDate;
+
+        return $this;
+    }
+
+    public function getFamilyfood(): ?FamilyFood
+    {
+        return $this->familyfood;
+    }
+
+    public function setFamilyfood(?FamilyFood $familyfood): self
+    {
+        $this->familyfood = $familyfood;
+
+        return $this;
+    }
+
+    public function getPreservation(): ?Preservation
+    {
+        return $this->preservation;
+    }
+
+    public function setPreservation(?Preservation $preservation): self
+    {
+        $this->preservation = $preservation;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

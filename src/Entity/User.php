@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\commonMixins\DateMixins;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -37,6 +39,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Food::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $food;
+
+    public function __construct()
+    {
+        $this->food = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,5 +129,35 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Food[]
+     */
+    public function getFood(): Collection
+    {
+        return $this->food;
+    }
+
+    public function addFood(Food $food): self
+    {
+        if (!$this->food->contains($food)) {
+            $this->food[] = $food;
+            $food->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFood(Food $food): self
+    {
+        if ($this->food->removeElement($food)) {
+            // set the owning side to null (unless already changed)
+            if ($food->getUser() === $this) {
+                $food->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -5,7 +5,10 @@ namespace App\Entity\commonMixins;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
+/**
+ * Trait DateMixins
+ * @package App\Entity\commonMixins
+ */
 trait DateMixins
 {
     /**

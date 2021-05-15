@@ -10,5 +10,25 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiCoreController extends AbstractController
 {
+    protected function generateErrors($errors): array
+    {
+        // If there are more than 0 errors
+        if (count($errors) > 0) {
+
+            // We create an empty array where we will store the errors
+            $errorsList = [];
+
+            // We loop on $errors to extract each error
+            foreach ($errors as $error) {
+                // We store the errors (the field in error in key and the message in value)
+                // (associative array)
+
+                $errorsList[$error->getPropertyPath()] = $error->getMessage();
+
+            }
+        }
+
+        return $errorsList;
+    }
 
 }

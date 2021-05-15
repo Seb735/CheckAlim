@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FoodRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Food
 {
@@ -153,5 +154,13 @@ class Food
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAtDefault()
+    {
+        $this->createdAt = new \DateTime();
     }
 }

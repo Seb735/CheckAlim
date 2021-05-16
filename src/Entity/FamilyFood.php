@@ -20,13 +20,13 @@ class FamilyFood
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"get_all_food","get_one_food"})
+     * @Groups({"get_all_food","get_one_food","get_all_familyfood","get_one_familyfood"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"get_all_food","get_one_food"})
+     * @Groups({"get_all_food","get_one_food","get_all_familyfood","get_one_familyfood"})
      */
     private $name;
 

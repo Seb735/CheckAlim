@@ -153,7 +153,6 @@ class FoodController extends ApiCoreController
      */
     public function deleteFood(Food $food = null, EntityManagerInterface $entityManager): Response
     {
-        // if the story is not found, answer with message json and status code 404
         if ($food === null) {
             return $this->json(['message' => 'Aliment introuvable.'], Response::HTTP_NOT_FOUND);
         }

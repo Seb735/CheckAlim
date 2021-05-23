@@ -1,3 +1,6 @@
 <footer>
-
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <span class="nav-link disabled">{{ app.user.email }}</span>
+        <a class="btn btn-dark" href="{{ path('app_logout') }}">Deconnexion</a>
+    {% endif %}
 </footer>

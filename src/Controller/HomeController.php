@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\FoodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,8 +23,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/dashboard", name="dashboard")
      */
-    public function dashboard(): Response
+    public function dashboard(FoodRepository $foodRepo): Response
     {
-        return $this->render('home/dashboard.html.twig');
+        $currentUser = $this->getUser();
+        $lastFiveFoodCreated = $foodRepo->getFiveForOneUserInOrderCreated($currentUser);
+        return $this->render('home/dashboard.html.twig',[
+            'lastFiveFoodCreated' => $lastFiveFoodCreated,
+        ]);
     }
 }

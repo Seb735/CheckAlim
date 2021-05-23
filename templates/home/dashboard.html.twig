@@ -3,4 +3,13 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <main class="container">
+        <div class="row justify-content-around">
+            {% include('layout/dashboard/_five_last_food_created.html.twig') %}
+
+            {% include('layout/dashboard/_food_almost_expired.html.twig') %}
+        </div>
+
+    </main>
+
 {% endblock %}

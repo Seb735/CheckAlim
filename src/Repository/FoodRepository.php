@@ -29,6 +29,17 @@ class FoodRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getFiveForOneUserInOrderCreated(User $user)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('f.createdAt', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Food[] Returns an array of Food objects
     //  */

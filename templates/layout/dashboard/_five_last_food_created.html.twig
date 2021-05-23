@@ -1,0 +1,27 @@
+<div class="card col-5 text-center p-0">
+    <div class="card-header">
+        Derniers aliments ajoutés
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Date d'expiration</th>
+                <th scope="col">Conservation</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for food in lastFiveFoodCreated %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>{{ food.quantity }}</td>
+                    <td>{{ food.expirationDate | date('d/m/Y') }}</td>
+                    <td>{{ food.preservation.type }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

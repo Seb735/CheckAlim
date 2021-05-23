@@ -35,7 +35,18 @@ security:
             anonymous: true
             lazy: true
             provider: app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
     access_control:
+        # Pour l'accès à l'API seulement
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+
+        # Accès au site simple
+        - { path: ^/food, roles: IS_AUTHENTICATED_FULLY }

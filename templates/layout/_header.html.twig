@@ -1,0 +1,29 @@
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <span class="navbar-brand">Check Alim</span>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {# User connecté #}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('dashboard') }}">Accueil</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled">{{ app.user.email }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                        </li>
+                    {# User non connecté #}
+                    {% else %}
+                        <li>
+                            <a class="nav-link disabled">Bonjour, visiteur</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+</header>

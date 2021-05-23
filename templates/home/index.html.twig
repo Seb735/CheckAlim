@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>
+        Bienvenue
+    </h1>
+    <h5>
+        Veuillez vous connecter pour utiliser le service
+    </h5>
+        <a class="btn btn-primary" href="{{ path('app_login') }}">Connexion</a>
+{% endblock %}

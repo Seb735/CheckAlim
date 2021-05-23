@@ -20,13 +20,13 @@ class Preservation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"get_all_food","get_one_food"})
+     * @Groups({"get_all_food","get_one_food","get_all_preservation","get_one_preservation"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Groups({"get_all_food","get_one_food"})
+     * @Groups({"get_all_food","get_one_food","get_all_preservation","get_one_preservation"})
      */
     private $type;
 

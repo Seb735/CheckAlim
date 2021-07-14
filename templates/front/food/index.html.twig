@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food index{% endblock %}
+{% block title %}Aliments{% endblock %}
 
 {% block body %}
-    <h1>Food index</h1>
-
+    <h1>Tout les aliments</h1>
+    {% include('layout/_link_table.html.twig')  %}
     <table class="table">
         <thead>
             <tr>
@@ -29,7 +29,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Pas d'aliments trouvés</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -68,17 +68,12 @@ class FoodController extends ApiCoreController
         EntityManagerInterface $em,
         ValidatorInterface $validator,
         //!!! TEMPORAIRE !!!
-        UserRepository $userRepo,
         PreservationRepository $preservationRepo,
         FamilyFoodRepository $familyFoodRepo
         //!!! ========== !!!
     ): Response
     {
-        // TODO A mettre en place une fois la connexion d'un utilisateur mis en place
-        // $currentUser = $this->getUser();
-
-        //! Seulement temporaire, le temps d'avoir des utilisateurs actives
-        $currentUser = $userRepo->find(1);
+        $currentUser = $this->getUser();
 
         //! A enlever une fois les données récupérées du front
         $preservation = $preservationRepo->find(mt_rand(1, 4));
